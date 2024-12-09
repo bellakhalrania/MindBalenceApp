@@ -15,20 +15,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Gestion des insets pour adapter la vue aux barres système
+        // Adjust view padding to account for system bars (status bar, navigation bar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.frame_container_main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            insets // Return insets to propagate them
         }
 
-        // Initialisation avec le fragment HomeFragment
-        supportFragmentManager.beginTransaction()
-            .add(R.id.frame_container_main, HomeFragment())
-            .commit()
+        // Initialize with HomeFragment
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frame_container_main, HomeFragment())
+                .commit()
+        }
 
-        // Configuration de la navigation avec BottomNavigationView
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        // Set up BottomNavigationView with fragment change logic
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {

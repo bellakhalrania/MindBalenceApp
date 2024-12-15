@@ -1,77 +1,51 @@
-package iset.example.mindbalenceapp.ui
+package iset.example.mindbalenceapp
 
-import android.graphics.Bitmap
+import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import iset.example.mindbalenceapp.data.Chat
-import iset.example.mindbalenceapp.data.ChatData
+import com.google.ai.client.generativeai.GenerativeModel
+import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class ChatViewModel : ViewModel() {
-    private val _chatState = MutableStateFlow(ChatState())
-    val chatState = _chatState.asStateFlow()
 
-    fun onEvent(event: ChatUiEvent) {
-        when (event) {
-            is ChatUiEvent.SendPrompt -> {
-                if (event.prompt.isNotEmpty()) {
-                    addPrompt(event.prompt, event.bitmap)
-
-                    if (event.bitmap != null) {
-                        getResponseWithImage(event.prompt, event.bitmap)
-                    } else {
-                        getResponse(event.prompt)
-                    }
-                }
-            }
-
-            is ChatUiEvent.UpdatePrompt -> {
-                _chatState.update {
-                    it.copy(prompt = event.newPrompt)
-                }
-            }
-        }
+    val messageList by lazy {
+        mutableStateListOf<MessageModel>()
     }
 
-    private fun addPrompt(prompt: String, bitmap: Bitmap?) {
-        _chatState.update {
-            it.copy(
-                chatList = it.chatList.toMutableList().apply {
-                    add(0, Chat(prompt, bitmap, true))
-                },
-                prompt = "",
-                bitmap = null
-            )
-        }
-    }
+    val generativeModel : GenerativeModel = GenerativeModel(
+        modelName = "gemini-pro",
+        apiKey = Constants.apiKey
+    )
 
-    private fun getResponse(prompt: String) {
+    @RequiresApi(35)
+    fun sendMessage(question : String){
         viewModelScope.launch {
-            val chat = ChatData.getResponse(prompt)
-            _chatState.update {
-                it.copy(
-                    chatList = it.chatList.toMutableList().apply {
-                        add(0, chat)
-                    }
+
+            try{
+                val chat = generativeModel.startChat(
+                    history = messageList.map {
+                        content(it.role){ text(it.message) }
+                    }.toList()
                 )
+
+                messageList.add(MessageModel(question,"user"))
+                messageList.add(MessageModel("Typing....","model"))
+
+                val response = chat.sendMessage(question)
+                Log.d("Gemini Response", response.text.toString())
+
+
+                messageList.removeLast()
+                messageList.add(MessageModel(response.text.toString(),"model"))
+            }catch (e : Exception){
+                messageList.removeLast()
+                messageList.add(MessageModel("Error : "+e.message.toString(),"model"))
             }
+
+
         }
     }
-
-   private fun getResponseWithImage(prompt: String, bitmap: Bitmap) {
-        viewModelScope.launch {
-            val chat = ChatData.getResponseWithImage(prompt, bitmap)
-            _chatState.update {
-                it.copy(
-                    chatList = it.chatList.toMutableList().apply {
-                        add(0, chat)
-                    }
-                )
-            }
-        }
-    }
-
 }

@@ -1,9 +1,7 @@
-package iset.example.mindbalenceapp.ui
+package iset.example.mindbalenceapp
 
 
-
-
-
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,11 +17,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,20 +32,30 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import iset.example.mindbalenceapp.ChatViewModel
-import iset.example.mindbalenceapp.MessageModel
+import iset.example.mindbalenceapp.ui.ColorModelMessage
+import iset.example.mindbalenceapp.ui.ColorUserMessage
+import iset.example.mindbalenceapp.ui.Purple80
+import iset.example.mindbalenceapp.ui.gradientBrush
+import kotlin.collections.reversed
+import kotlin.text.isNotEmpty
 
-
-
+/*
+@RequiresApi(35)
 @Composable
 fun ChatPage(modifier: Modifier = Modifier,viewModel: ChatViewModel) {
+
+
+
     Column(
         modifier = modifier
+            .fillMaxSize()
+            .background(gradientBrush)
     ) {
         AppHeader()
         MessageList(
@@ -58,7 +68,33 @@ fun ChatPage(modifier: Modifier = Modifier,viewModel: ChatViewModel) {
             }
         )
     }
+}*/
+@RequiresApi(35)
+@Composable
+fun ChatPage(
+    modifier: Modifier = Modifier,
+    viewModel: ChatViewModel,
+    onBackToHome: () -> Unit
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(gradientBrush)
+    ) {
+        AppHeader(onBackToHome = onBackToHome)
+        MessageList(
+            modifier = Modifier.weight(1f),
+            messageList = viewModel.messageList
+        )
+        MessageInput(
+            onMessageSend = {
+                viewModel.sendMessage(it)
+            }
+        )
+    }
 }
+
+
 
 
 @Composable
@@ -113,7 +149,7 @@ fun MessageRow(messageModel: MessageModel) {
                         bottom = 8.dp
                     )
                     .clip(RoundedCornerShape(48f))
-                    //.background(if (isModel) ColorModelMessage else ColorUserMessage)
+                    .background(if (isModel) ColorModelMessage else ColorUserMessage)
                     .padding(16.dp)
             ) {
 
@@ -121,7 +157,7 @@ fun MessageRow(messageModel: MessageModel) {
                     Text(
                         text = messageModel.message,
                         fontWeight = FontWeight.W500,
-                        color = Color.White
+                        color = Color.Black
                     )
                 }
 
@@ -138,6 +174,7 @@ fun MessageRow(messageModel: MessageModel) {
 
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MessageInput(onMessageSend : (String)-> Unit) {
 
@@ -154,14 +191,18 @@ fun MessageInput(onMessageSend : (String)-> Unit) {
             value = message,
             onValueChange = {
                 message = it
-            }
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = ColorUserMessage,  // Change border color when focused
+                unfocusedBorderColor = Purple80,  // Change border color when not focused
+                // Background color of the text field
+            )
         )
         IconButton(onClick = {
-            if(message.isNotEmpty()){
+            if (message.isNotEmpty()) {
                 onMessageSend(message)
                 message = ""
             }
-
         }) {
             Icon(
                 imageVector = Icons.Default.Send,
@@ -171,18 +212,50 @@ fun MessageInput(onMessageSend : (String)-> Unit) {
     }
 }
 
+/*
 @Composable
 fun AppHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary)
+            .background(gradientBrush)
+
     ) {
         Text(
             modifier = Modifier.padding(16.dp),
-            text = "Easy Bot",
-            color = Color.White,
+            text = "Hello! How Can I Help!",
+            color = Color.Black,
             fontSize = 22.sp
         )
+    }
+}*/@Composable
+fun AppHeader(onBackToHome: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(gradientBrush)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            IconButton(
+                onClick = { onBackToHome() }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_west_24),
+                    contentDescription = "Back to Home",
+                    tint = Color.Black
+                )
+            }
+            Text(
+                text = "Hello! How Can I Help!",
+                color = Color.Black,
+                fontSize = 22.sp,
+                modifier = Modifier.padding(start = 8.dp)
+            )
+        }
     }
 }

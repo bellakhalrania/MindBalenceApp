@@ -7,8 +7,8 @@
     />
 
     <item
-        android:id="@+id/mediation"
-        android:title="Mediation"
+        android:id="@+id/test"
+        android:title="Tests"
         android:icon="@drawable/meditation_round"
         />
 

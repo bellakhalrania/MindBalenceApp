@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/background_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DepressionActivity">
+    android:orientation="vertical"
+    tools:context=".DepressionActivity"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- Symptoms of Depression -->
+<TextView
+    android:id="@+id/titleSymptoms"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Symptoms of Depression:"
+    android:textColor="@color/orange"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:paddingBottom="8dp" />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="• Persistent sadness or low mood\n• Loss of interest or pleasure in activities\n• Fatigue and decreased energy\n• Changes in appetite or weight\n• Sleep disturbances (insomnia or oversleeping)\n• Feelings of worthlessness or guilt\n• Difficulty concentrating or making decisions\n• Recurrent thoughts of death or suicide"
+    android:textSize="16sp"
+    android:lineSpacingExtra="4dp"
+    android:paddingBottom="16dp" />
+
+<!-- Types of Depression -->
+<TextView
+    android:id="@+id/titleTypes"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Types of Depression:"
+    android:textColor="@color/orange"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:paddingBottom="8dp" />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="• Major Depressive Disorder (MDD): Characterized by severe and persistent symptoms.\n• Persistent Depressive Disorder (Dysthymia): A milder but chronic form of depression.\n• Bipolar Disorder: Alternating periods of depression and mania.\n• Seasonal Affective Disorder (SAD): Depression that occurs during specific seasons.\n• Postpartum Depression: Affects new mothers after childbirth.\n• Atypical Depression: Symptoms include increased appetite and hypersomnia."
+    android:textSize="16sp"
+    android:lineSpacingExtra="4dp"
+    android:paddingBottom="16dp" />
+
+<!-- Treatment for Depression -->
+<TextView
+    android:id="@+id/titleTreatment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Treatment for Depression:"
+    android:textColor="@color/orange"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:paddingBottom="8dp" />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="• Psychotherapy: Talk therapy, such as cognitive-behavioral therapy (CBT) or interpersonal therapy (IPT), can help individuals manage their thoughts and emotions.\n• Medication: Antidepressant medications, such as selective serotonin reuptake inhibitors (SSRIs) and serotonin-norepinephrine reuptake inhibitors (SNRIs), can be prescribed by a psychiatrist.\n• Lifestyle Changes: Regular exercise, a balanced diet, adequate sleep, and stress management techniques can help alleviate symptoms.\n• Support Networks: Building a strong support system with friends and family can be beneficial.\n• Electroconvulsive Therapy (ECT) and Transcranial Magnetic Stimulation (TMS): These are options for severe, treatment-resistant depression."
+    android:textSize="16sp"
+    android:lineSpacingExtra="4dp"
+    android:paddingBottom="16dp" />
+
+<!-- Additional Information -->
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="It's important to note that seeking professional help is crucial when dealing with depression. If you or someone you know is struggling with depression, it's essential to reach out to a mental health professional, a healthcare provider, or a helpline to discuss treatment options and get the necessary support. Depression is a treatable condition, and with the right interventions, many individuals can experience significant improvement in their mental health and overall quality of life."
+    android:textSize="16sp"
+    android:lineSpacingExtra="4dp" />
+
+</LinearLayout>

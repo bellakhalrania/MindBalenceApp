@@ -17,6 +17,27 @@
         android:theme="@style/Theme.YogaBuddy"
         tools:targetApi="31">
         <activity
+            android:name=".ADHDActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnxietyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DepressionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DepressionResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DepressionTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnxietyTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ADHDTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity"
             android:exported="false" />
         <activity

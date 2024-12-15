@@ -10,7 +10,7 @@ import iset.example.mindbalenceapp.fragments.HomeFragment
 import iset.example.mindbalenceapp.fragments.MeditationFragment
 import iset.example.mindbalenceapp.fragments.MyProfileFragment
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,9 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
-                R.id.mediation-> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame_container_main, MeditationFragment())
-                        .commit()
+                R.id.test-> {
+                    val intent = Intent(this, TestActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.profile -> {

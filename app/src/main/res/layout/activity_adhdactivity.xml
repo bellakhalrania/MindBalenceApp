@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/background_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ADHDActivity"
+    android:padding="16dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inattention Symptoms:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Difficulty focusing on tasks or activities.\n- Frequent careless mistakes in schoolwork or other activities.\n- Trouble organizing tasks and activities.\n- Avoiding or being reluctant to engage in tasks that require sustained mental effort (e.g., homework).\n- Frequent forgetfulness in daily activities.\n- Easily distracted by extraneous stimuli (e.g., sounds, conversations)."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hyperactivity and Impulsivity Symptoms:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Fidgeting or squirming when seated.\n- Inability to stay seated in situations where it's expected (e.g., in the classroom, meetings).\n- Running or climbing in inappropriate situations.\n- Inability to engage in activities quietly.\n- Talking excessively.\n- Interrupting or intruding on others’ conversations.\n- Difficulty waiting for their turn."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Types of ADHD:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- ADHD, Combined Presentation – Symptoms of both inattention and hyperactivity/impulsivity are present.\n- ADHD, Inattentive Presentation – Inattention symptoms are more prominent.\n- ADHD, Hyperactive-Impulsive Presentation – Hyperactivity and impulsivity symptoms are more prominent."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Causes of ADHD:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Genetics – ADHD tends to run in families, suggesting a genetic component.\n- Brain structure and function – Differences in the brain's structure and activity can contribute to symptoms.\n- Environmental factors – Factors like prenatal exposure to tobacco, alcohol, or drugs, premature birth, and lead exposure are linked to a higher risk of developing ADHD.\n- Neurotransmitter imbalances – The chemicals in the brain that regulate mood, attention, and impulses, like dopamine, may be involved in ADHD."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diagnosis of ADHD:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- ADHD is diagnosed through a comprehensive evaluation by a healthcare professional. It involves:\n  - Clinical interview with the child and their family.\n  - Behavioral assessments and questionnaires (e.g., Conners Rating Scales).\n  - Observations of behavior in different settings (e.g., home and school).\n  - Rule-out other conditions that could mimic ADHD symptoms."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treatment Options:"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Medications:\n   - Stimulants – The most common and effective medications for ADHD. They include:\n     - Methylphenidate (e.g., Ritalin, Concerta)\n     - Amphetamines (e.g., Adderall, Vyvanse)\n   - Non-stimulants – For individuals who don't respond well to stimulants:\n     - Atomoxetine (Strattera)\n     - Guanfacine (Intuniv)\n\n- Behavioral Therapy:\n   - Cognitive Behavioral Therapy (CBT) – Helps individuals develop strategies to manage symptoms, such as improving focus and organization.\n   - Parent training – Helps parents develop strategies to support their child’s behavior management.\n   - School-based interventions – Includes modifications in the classroom, such as extended time for tasks."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>
+</LinearLayout>

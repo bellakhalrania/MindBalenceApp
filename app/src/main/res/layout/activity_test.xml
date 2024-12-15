@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".TestActivity">
+
+    <!-- LinearLayout pour toute la page -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <!-- Section Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:fontFamily="@font/great_vibes"
+                    android:textColor="#EB784E"
+                    android:text="Take A Mental Health Test"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/username_home_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/great_vibes"
+                    android:textColor="#20756D"
+                    android:text="Please Select a test To Start"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- Card 1 -->
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/basic_yoga_card"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="27dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ADHD Test"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Our quiz can help detect ADHD. "
+                    android:textSize="14sp" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/basic_yoga_btn"
+                    android:layout_width="135dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/basic_yoga_card_btn"
+                    android:backgroundTint="#EB784E"
+                    android:drawableStart="@drawable/play_btn"
+                    android:text="Take Quiz"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/adhd_read_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Read More"
+                    android:textColor="@color/background"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/adhdquiz"
+                android:background="@drawable/rounded_image"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true" />
+        </LinearLayout>
+
+        <!-- Card 2 -->
+        <LinearLayout
+            android:id="@+id/full_body_yoga_card"
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/basic_yoga_card"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="27dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anxiety Test"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Our quiz can help determine if you have Anxiety."
+                    android:textSize="14sp" />
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/full_body_yoga_btn"
+                    android:layout_width="135dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/basic_yoga_card_btn"
+                    android:backgroundTint="#EB784E"
+                    android:drawableStart="@drawable/play_btn"
+                    android:text="Take Quiz"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/anexity_read_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Read More"
+                    android:textColor="@color/background"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/anxietyquiz"
+                android:background="@drawable/rounded_image"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true" />
+
+        </LinearLayout>
+
+        <!-- Card 3 -->
+        <LinearLayout
+            android:id="@+id/upper_body_yoga_card"
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/basic_yoga_card"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="27dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Depression Test"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Our quiz can help you detect early signs of Depression."
+                    android:textSize="14sp" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/depression"
+                    android:layout_width="135dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/basic_yoga_card_btn"
+                    android:backgroundTint="#EB784E"
+                    android:drawableStart="@drawable/play_btn"
+                    android:text="Take Quiz"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/depression_read_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Read More"
+                    android:textColor="@color/background"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/deppressionquiz"
+                android:background="@drawable/rounded_image"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

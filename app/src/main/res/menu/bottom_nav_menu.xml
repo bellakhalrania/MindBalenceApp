@@ -7,8 +7,8 @@
     />
 
     <item
-        android:id="@+id/meditation"
-        android:title="Meditation"
+        android:id="@+id/mediation"
+        android:title="Mediation"
         android:icon="@drawable/meditation_round"
         />
 
@@ -17,6 +17,12 @@
         android:id="@+id/profile"
         android:title="Account"
         android:icon="@drawable/profile_icon"
+        />
+
+    <item
+        android:id="@+id/chatbot"
+        android:title="ChatBot"
+        android:icon="@drawable/chat_bot_icon"
         />
 
 

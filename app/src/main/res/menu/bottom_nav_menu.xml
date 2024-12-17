@@ -7,8 +7,8 @@
     />
 
     <item
-        android:id="@+id/meditation"
-        android:title="Meditation"
+        android:id="@+id/test"
+        android:title="Tests"
         android:icon="@drawable/meditation_round"
         />
 
@@ -22,6 +22,12 @@
         android:id="@+id/navigation_todo"
         android:icon="@drawable/ic_todo_active"
         android:title="To-Do List" />
+
+    <item
+        android:id="@+id/chatbot"
+        android:title="ChatBot"
+        android:icon="@drawable/chat_bot_icon"
+        />
 
 
 </menu>

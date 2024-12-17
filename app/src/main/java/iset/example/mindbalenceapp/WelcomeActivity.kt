@@ -19,7 +19,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding.welcomeBtn.setOnClickListener {
             val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
             startActivity(intent)
-            finish() // This will close the WelcomeActivity so it doesn't appear in the back stack
+            finish()
         }
 
     }

@@ -3,6 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_color">#E9F2F2</color>
+<<<<<<< HEAD
     <color name="primary_color">#090909</color>
     <color name="gray">#EAF4F4</color>
+=======
+    <color name="background">#20756D</color>
+    <color name="orange">#EB784E</color>
+>>>>>>> 37196aba9c8f879f829c2fbb17c43bc41a02bf4b
 </resources>

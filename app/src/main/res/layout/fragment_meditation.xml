@@ -387,23 +387,10 @@
                         android:layout_alignParentBottom="true"
                         android:layout_margin="20dp"
                         />
-
                 </RelativeLayout>
-
             </LinearLayout>
-
-
-
-
-
-
-
         </GridLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 </androidx.core.widget.NestedScrollView>
 
 

@@ -2,6 +2,7 @@ package iset.example.mindbalenceapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,7 +12,7 @@ import iset.example.mindbalenceapp.fragments.MeditationFragment
 import iset.example.mindbalenceapp.fragments.MyProfileFragment
 
 open class MainActivity : AppCompatActivity() {
-
+lateinit var  username:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,7 +23,6 @@ open class MainActivity : AppCompatActivity() {
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -38,6 +38,10 @@ open class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frame_container_main, HomeFragment())
                         .commit()
+                    val  nameuser= intent.getStringExtra("username")
+                    username= findViewById(R.id.usernameField)
+                    username.setText(nameuser)
+
                     true
                 }
                 R.id.test-> {

@@ -65,11 +65,11 @@ dependencies {
     implementation ("androidx.compose.material:material-icons-extended:1.5.4")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.ui:ui")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation ("androidx.compose.material3:material3:1.2.0-beta02")
     implementation("androidx.activity:activity-compose:1.7.2")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -45,15 +45,26 @@
                     android:fontFamily="@font/lora"
                     android:text="MindBalence"
                     android:textSize="34sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/username_home_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lora"
-                    android:text="User"
-                    android:textSize="34sp"
+                    android:text="Welcome"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/usernameuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
 
             </LinearLayout>
 

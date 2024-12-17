@@ -15,6 +15,43 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Ligne horizontale pour contenir la case à cocher et les icônes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start"
+                android:paddingBottom="8dp">
+
+                <!-- Case à cocher -->
+                <CheckBox
+                    android:id="@+id/taskCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"/>
+
+                <!-- Icone Modifier -->
+                <ImageView
+                    android:id="@+id/editIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_edit"
+                    android:contentDescription="Edit Icon"
+                    android:layout_gravity="center_vertical" />
+
+                <!-- Icone Supprimer -->
+                <ImageView
+                    android:id="@+id/deleteIcon"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_delete"
+                    android:contentDescription="Delete Icon"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <!-- Titre de la tâche -->
             <TextView
                 android:id="@+id/taskTitleTextView"
                 android:layout_width="wrap_content"
@@ -23,17 +60,18 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Date de la tâche -->
             <TextView
                 android:id="@+id/taskDateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textSize="14sp" />
+
+            <!-- Heure de la tâche -->
             <TextView
                 android:id="@+id/taskTimeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textSize="14sp" />
 
         </LinearLayout>

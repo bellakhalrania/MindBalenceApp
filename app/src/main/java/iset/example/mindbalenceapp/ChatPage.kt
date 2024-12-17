@@ -22,8 +22,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
+
+
+import androidx.compose.material3.Text
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -192,11 +195,11 @@ fun MessageInput(onMessageSend : (String)-> Unit) {
             onValueChange = {
                 message = it
             },
-            colors = TextFieldDefaults.outlinedTextFieldColors(
+            /*colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = ColorUserMessage,  // Change border color when focused
                 unfocusedBorderColor = Purple80,  // Change border color when not focused
                 // Background color of the text field
-            )
+            )*/
         )
         IconButton(onClick = {
             if (message.isNotEmpty()) {

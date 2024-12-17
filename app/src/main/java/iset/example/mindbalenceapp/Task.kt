@@ -1,3 +1,3 @@
 package iset.example.mindbalenceapp.models
 
-data class Task(val name: String, val date: String, val time: String)
+data class Task(var name: String, var date: String, var time: String, var isCompleted: Boolean)

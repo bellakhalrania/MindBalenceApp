@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Titre de la tâche -->
+    <EditText
+        android:id="@+id/taskNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Name"
+        android:textSize="30dp"
+        android:inputType="text" />
+
+    <!-- Bouton pour sélectionner la date -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/taskDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:text="Pick Date"
+            android:textSize="16sp"
+            android:layout_marginRight="3dp" />
+
+        <!-- Bouton pour sélectionner l'heure -->
+        <Button
+            android:id="@+id/taskTimeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:text="Pick Time"
+            android:textSize="16sp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="350dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="50dp">
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:id="@+id/cancledbutton"
+
+            android:src="@drawable/ic_cancel"
+            android:padding="10dp"
+            app:tint="@android:color/darker_gray"
+            android:background="@android:color/transparent"
+            android:layout_marginEnd="15dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/confirm_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_tick"
+            android:contentDescription="Confirm"
+            android:layout_marginLeft="15dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:tint="@android:color/holo_green_dark"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

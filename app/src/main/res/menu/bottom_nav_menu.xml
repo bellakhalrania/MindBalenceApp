@@ -18,6 +18,10 @@
         android:title="Account"
         android:icon="@drawable/profile_icon"
         />
+    <item
+        android:id="@+id/navigation_todo"
+        android:icon="@drawable/ic_todo_active"
+        android:title="To-Do List" />
 
 
 </menu>

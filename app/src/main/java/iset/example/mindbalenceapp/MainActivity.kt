@@ -3,6 +3,7 @@ package iset.example.mindbalenceapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,12 +12,13 @@ import iset.example.mindbalenceapp.fragments.HomeFragment
 import iset.example.mindbalenceapp.fragments.MeditationFragment
 import iset.example.mindbalenceapp.fragments.MyProfileFragment
 
-open class MainActivity : AppCompatActivity() {
-lateinit var  username:TextView
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var username: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.frame_container_main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -30,21 +32,20 @@ lateinit var  username:TextView
                 .commit()
         }
 
-
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame_container_main, HomeFragment())
-                        .commit()
-                    val  nameuser= intent.getStringExtra("username")
-                    username= findViewById(R.id.usernameField)
-                    username.setText(nameuser)
-
+                    val nameuser = intent.getStringExtra("username")
+                    if (nameuser != null && nameuser.isNotEmpty()) {
+                        username = findViewById(R.id.usernameField)
+                        username.text = nameuser
+                    } else {
+                        Toast.makeText(this, "Username not found", Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
-                R.id.test-> {
+                R.id.test -> {
                     val intent = Intent(this, TestActivity::class.java)
                     startActivity(intent)
                     true

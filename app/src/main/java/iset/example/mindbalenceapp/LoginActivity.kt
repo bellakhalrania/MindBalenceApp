@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.login_signuppi.SignupActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Gestion du bouton Sign Up
         registerPrompt.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
+            val intent = Intent(this@LoginActivity, SignupActivity::class.java)
             startActivity(intent)
         }
     }

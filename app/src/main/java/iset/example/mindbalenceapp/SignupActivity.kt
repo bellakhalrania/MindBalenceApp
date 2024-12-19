@@ -1,4 +1,4 @@
-package com.example.login_signuppi
+package iset.example.mindbalenceapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -53,7 +53,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
         alreadyAccountPrompt.setOnClickListener {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this@SignupActivity, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -123,7 +123,7 @@ class SignupActivity : AppCompatActivity() {
                         ).show()
 
                         // Navigate to login screen after successful registration
-                        val intent = Intent(this@SignupActivity, MainActivity::class.java)
+                        val intent = Intent(this@SignupActivity, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {

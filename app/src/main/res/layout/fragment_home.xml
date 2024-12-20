@@ -129,10 +129,11 @@
                     android:drawableStart="@drawable/play_btn"
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingStart="10dp"
-                    android:text="Start Journey"
+                    android:text="@string/start_journey"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
 

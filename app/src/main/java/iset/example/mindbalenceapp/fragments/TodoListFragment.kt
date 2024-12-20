@@ -10,11 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import iset.example.mindbalenceapp.R
 import iset.example.mindbalenceapp.adapters.TaskAdapter
 import iset.example.mindbalenceapp.models.Task
+import iset.example.mindbalenceapp.ui.ApiClientTask
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class TodoListFragment : Fragment() {
@@ -39,22 +42,15 @@ class TodoListFragment : Fragment() {
         taskRecyclerView.layoutManager = LinearLayoutManager(context)
         taskAdapter = TaskAdapter(taskList, object : TaskAdapter.OnTaskActionListener {
             override fun onEditTask(task: Task) {
-                // Log pour vérifier si la méthode est appelée
-                Log.d("TodoListFragment", "onEditTask called for task: ${task.name}")
                 showEditDialog(task)
             }
 
-
             override fun onDeleteTask(task: Task) {
-                // Delete task logic
-                taskList.remove(task)
-                taskAdapter.notifyDataSetChanged()
+                deleteTask(task)
             }
 
             override fun onTaskCompleted(task: Task) {
-                // Mark task as completed (strikethrough)
-                task.isCompleted = true
-                taskAdapter.notifyDataSetChanged()
+                completeTask(task)
             }
         })
         taskRecyclerView.adapter = taskAdapter
@@ -99,9 +95,8 @@ class TodoListFragment : Fragment() {
             if (taskName.isEmpty() || selectedDate.isEmpty() || selectedTime.isEmpty()) {
                 Toast.makeText(context, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
-                val task = Task(taskName, selectedDate, selectedTime, isCompleted = false)
-                taskList.add(task)
-                taskAdapter.notifyItemInserted(taskList.size - 1)
+                val task = Task(null, taskName, selectedDate, selectedTime, isCompleted = false)
+                addTask(task)
 
                 // Reset inputs
                 taskInput.setText("")
@@ -111,28 +106,81 @@ class TodoListFragment : Fragment() {
                 selectedTime = ""
             }
         }
+
+        // Load tasks from API
+        loadTasks()
+    }
+
+    private fun loadTasks() {
+        lifecycleScope.launch {
+            try {
+                val tasks = ApiClientTask.instance.getAllTask()
+                taskList.clear()
+                taskList.addAll(tasks)
+                taskAdapter.notifyDataSetChanged()
+            } catch (e: Exception) {
+                Log.e("TodoListFragment", "Error loading tasks: ${e.message}")
+            }
+        }
+    }
+
+    private fun addTask(task: Task) {
+        lifecycleScope.launch {
+            try {
+                val newTask = ApiClientTask.instance.addTask(task)
+                taskList.add(newTask)
+                taskAdapter.notifyItemInserted(taskList.size - 1)
+            } catch (e: Exception) {
+                Log.e("TodoListFragment", "Error adding task: ${e.message}")
+            }
+        }
+    }
+
+    private fun deleteTask(task: Task) {
+        lifecycleScope.launch {
+            try {
+                task.id?.let { ApiClientTask.instance.deleteTask(it.toInt().toString()) }
+                val position = taskList.indexOf(task)
+                taskList.removeAt(position)
+                taskAdapter.notifyItemRemoved(position)
+            } catch (e: Exception) {
+                Log.e("TodoListFragment", "Error deleting task: ${e.message}")
+            }
+        }
+    }
+
+    private fun completeTask(task: Task) {
+        lifecycleScope.launch {
+            try {
+                task.id?.let {
+                    val updatedTask = ApiClientTask.instance.completeTask(it.toInt())
+                    val position = taskList.indexOf(task)
+                    taskList[position] = updatedTask
+                    taskAdapter.notifyItemChanged(position)
+                }
+            } catch (e: Exception) {
+                Log.e("TodoListFragment", "Error completing task: ${e.message}")
+            }
+        }
     }
 
     private fun showEditDialog(task: Task) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_edit_task, null)
         val taskNameInput = dialogView.findViewById<EditText>(R.id.taskNameInput)
-        val dateInput = dialogView.findViewById<Button>(R.id.taskDateButton)  // Button for date
-        val timeInput = dialogView.findViewById<Button>(R.id.taskTimeButton)  // Button for time
-        val cancelBtn = dialogView.findViewById<ImageButton>(R.id.cancledbutton)
-        val saveBtn = dialogView.findViewById<ImageButton>(R.id.confirm_button)
+        val dateInput = dialogView.findViewById<Button>(R.id.taskDateButton)
+        val timeInput = dialogView.findViewById<Button>(R.id.taskTimeButton)
+        val cancelBtn = dialogView.findViewById<Button>(R.id.cancel_button)
+        val saveBtn = dialogView.findViewById<Button>(R.id.confirm_button)
 
-        // Pre-fill the dialog with the task's current data
         taskNameInput.setText(task.name)
         dateInput.text = task.date
         timeInput.text = task.time
 
-        // Create the dialog
         val dialog = AlertDialog.Builder(requireContext())
             .setTitle("Edit Task")
             .setView(dialogView)
             .create()
 
-        // Date button: Show DatePickerDialog
         dateInput.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -140,58 +188,58 @@ class TodoListFragment : Fragment() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
-                // Format and set the selected date
                 val formattedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
                 dateInput.text = formattedDate
             }, year, month, day).show()
         }
 
-        // Time button: Show TimePickerDialog
         timeInput.setOnClickListener {
             val calendar = Calendar.getInstance()
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
             val minute = calendar.get(Calendar.MINUTE)
 
             TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
-                // Format and set the selected time
                 val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
                 timeInput.text = formattedTime
             }, hour, minute, true).show()
         }
 
-        // Cancel button: closes the dialog without making changes
         cancelBtn.setOnClickListener {
-            dialog.dismiss()  // Close the dialog
+            dialog.dismiss()
         }
 
-        // Save button: saves the changes and updates the task in the list
         saveBtn.setOnClickListener {
             val newTaskName = taskNameInput.text.toString()
             val newDate = dateInput.text.toString()
             val newTime = timeInput.text.toString()
 
-            // Check if any of the fields are empty before saving
             if (newTaskName.isEmpty() || newDate.isEmpty() || newTime.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // Update the task with new values
                 task.name = newTaskName
                 task.date = newDate
                 task.time = newTime
-
-                // Notify the adapter that the task has been updated
-                val position = taskList.indexOf(task)
-                taskAdapter.notifyItemChanged(position)
-
-                // Close the dialog
+                updateTask(task)
                 dialog.dismiss()
             }
         }
 
-        // Show the dialog
         dialog.show()
     }
 
+    private fun updateTask(task: Task) {
+        lifecycleScope.launch {
+            try {
+                task.id?.let {
+                    val updatedTask = ApiClientTask.instance.updateTask(it.toInt().toString(), task)
 
-
+                    val position = taskList.indexOfFirst { t -> t.id == updatedTask.id }
+                    taskList[position] = updatedTask
+                    taskAdapter.notifyItemChanged(position)
+                }
+            } catch (e: Exception) {
+                Log.e("TodoListFragment", "Error updating task: ${e.message}")
+            }
+        }
+    }
 }

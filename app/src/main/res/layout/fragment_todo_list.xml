@@ -21,7 +21,7 @@
         android:inputType="text"
         android:padding="12dp"
         android:textColor="@color/primary_color"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Pick Time"
+        android:layout_marginStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/datePickerButton"
@@ -57,7 +58,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:text="Add Task"
-        android:backgroundTint="@color/primary_color"
+        android:backgroundTint="@color/orange"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/sortingSpinner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +71,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:entries="@array/sorting_options"
-        app:layout_constraintBottom_toTopOf="@+id/taskRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"
+        android:textSize="24sp"
+        android:minHeight="48dp"
+        android:text="filter"
+        android:contentDescription="@string/sorting_spinner_description"
+        app:layout_constraintTop_toBottomOf="@id/addTaskButton"
+        app:layout_constraintBottom_toTopOf="@id/taskRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addTaskButton" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecyclerView"

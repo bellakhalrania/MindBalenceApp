@@ -7,7 +7,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +39,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/ic_edit"
-                    android:contentDescription="Edit Icon"
+                    android:contentDescription="@string/edit_icon"
                     android:layout_gravity="center_vertical" />
 
                 <!-- Icone Supprimer -->
@@ -45,11 +47,14 @@
                     android:id="@+id/deleteIcon"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+
                     android:layout_marginStart="10dp"
                     android:src="@drawable/ic_delete"
                     android:contentDescription="Delete Icon"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
+
+
 
             <!-- Titre de la tâche -->
             <TextView

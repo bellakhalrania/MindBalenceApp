@@ -15,6 +15,7 @@ import iset.example.mindbalenceapp.fragments.HomeFragment
 import iset.example.mindbalenceapp.fragments.MeditationFragment
 import iset.example.mindbalenceapp.fragments.MyProfileFragment
 import iset.example.mindbalenceapp.fragments.TodoListFragment
+import iset.example.mindbalenceapp.ui.ApiClientTask
 
 open class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.frame_container_main)) { view, insets ->

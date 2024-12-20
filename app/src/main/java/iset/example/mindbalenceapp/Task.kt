@@ -1,3 +1,11 @@
 package iset.example.mindbalenceapp.models
 
-data class Task(var name: String, var date: String, var time: String, var isCompleted: Boolean)
+import com.google.gson.annotations.SerializedName
+
+data class Task(
+    @SerializedName("_id") val id: String?,
+    @SerializedName("name") var name: String,
+    @SerializedName("startDate") var date: String,
+    @SerializedName("startTime") var time: String,
+    @SerializedName("completed") var isCompleted: Boolean
+)
